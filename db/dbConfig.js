@@ -17,7 +17,9 @@ allowPublicKeyRetrieval: true
     database: process.env.PGDATABASE,
     password: process.env.PGPASSWORD,
     port: +process.env.PGPORT,
-    
+    ssl: {
+        rejectUnauthorized: false, // replace with your SSL configuration
+      }, 
 }
 
 module.exports = {MSQLDbConfigs,PSQLDbConfigs}
