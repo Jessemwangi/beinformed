@@ -16,7 +16,7 @@ const getTest =(req,res) =>{
         }
         
     })
-    psPool.end(()=>console.log('connection end'))
+    // psPool.end(()=>console.log('connection end'))
 }
 
 module.exports = getTest;
