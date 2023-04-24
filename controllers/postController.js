@@ -1,5 +1,6 @@
 "use strict";
 const { msDb ,psPool} = require("../db/dbconnect");
+const {MSQLDbConfigs,PSQLDbConfigs} = require( './dbConfig' );
 const db = psPool;
 const jwt = require("jsonwebtoken");
 const { getImageUrl } = require( "../utilities/utilities" );
@@ -172,7 +173,8 @@ const putPost = (req, res) => {
 };
 
 const updatePost = (req, res) => {
-  res.json("GET request to the homepage");
+
+  res.json(PSQLDbConfigs);
 };
 
 module.exports = {
