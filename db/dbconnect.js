@@ -12,14 +12,8 @@ const msDb = mysql.createConnection(MSQLDbConfigs);
 
 
 //
-//  const psPool = new Pool(PSQLDbConfigs)
+ const psPool = new Pool(PSQLDbConfigs)
  const psDb =  new Client(PSQLDbConfigs)
- const psPool = new Pool({
-    connectionString: PSQLDbConfigs,
-    ssl: {
-        rejectUnauthorized: false
-      }
-  });
 
 
 module.exports = {msDb ,psPool,psDb}

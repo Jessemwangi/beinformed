@@ -1,3 +1,4 @@
+require("dotenv").config();
 
 const MSQLDbConfigs ={
 host:process.env.MSQHOST,
