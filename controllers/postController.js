@@ -1,6 +1,6 @@
 "use strict";
 const { msDb ,psPool} = require("../db/dbconnect");
-const {MSQLDbConfigs,PSQLDbConfigs} = require( './dbConfig' );
+const {MSQLDbConfigs,PSQLDbConfigs} = require('../db/dbConfig' );
 const db = psPool;
 const jwt = require("jsonwebtoken");
 const { getImageUrl } = require( "../utilities/utilities" );
