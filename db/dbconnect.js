@@ -16,7 +16,9 @@ const msDb = mysql.createConnection(MSQLDbConfigs);
  const psDb =  new Client(PSQLDbConfigs)
  const psPool = new Pool({
     connectionString: PSQLDbConfigs,
-    ssl: true
+    ssl: {
+        rejectUnauthorized: false
+      }
   });
 
 
