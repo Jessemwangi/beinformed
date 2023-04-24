@@ -174,6 +174,7 @@ const putPost = (req, res) => {
 const updatePost = (req, res) => {
   res.json("GET request to the homepage");
 };
+
 module.exports = {
   addPost,
   getPosts,

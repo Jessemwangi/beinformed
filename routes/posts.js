@@ -12,8 +12,6 @@ router.delete('/:id', deleteData)
 router.put('/:id', putPost)
 // router.get('/dum/all', dummyget)
 
-router.get('/', function (req, res) {
-  res.send('POST request to the homepage')
-})
+router.get('/', updatePost)
 
 module.exports = router;
