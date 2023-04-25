@@ -1,6 +1,5 @@
 "use strict";
 const { msDb ,psPool} = require("../db/dbconnect");
-const {MSQLDbConfigs,PSQLDbConfigs} = require('../db/dbConfig' );
 const db = psPool;
 const jwt = require("jsonwebtoken");
 const { getImageUrl } = require( "../utilities/utilities" );
@@ -28,12 +27,7 @@ const getPosts =  (req, res) => {
               Returndata.push({...post, imageurl:imageurl})
             }
 // console.log(Returndata);
-        res.cookie("home_token","token cookies view",{
-          httpOnly:true,
-          secure:true,
-          sameSite: 'none'
-      
-      }).status(200).json(Returndata);
+        res.status(200).json(Returndata);
     });
   } catch (error) {
     res.status(500).json(error);
@@ -45,14 +39,14 @@ const addPost =  (req, res) => {
   console.log(req.body)
   try {
     const token = req.cookies.access_token;
-    console.log("token ....", token)
+  
     if (!token) return res.status(401).json("Not Authenticated!");
     jwt.verify(token, "s3cr3t", (err, userInfo) => {
       if (err){
 console.log(err)
       return res.status(403).json("Authentication token Not Valid");
       }
-      console.log("userInfo... ",userInfo)
+   
       const q = "INSERT INTO posts (title, description, image, CatID, uid) VALUES ($1, $2, $3, $4, $5) RETURNING id";
       const q2 = "INSERT INTO postsStatus (postId, statusId, createdBy, publishedBy) VALUES ($1, $2, $3, $4)";
 
@@ -165,7 +159,7 @@ const putPost = (req, res) => {
     db.query(q, params, (err, result) => {
       if (err) {
         console.error(err);
-        return res.status(500).json({ error: "Database error" });
+        return res.status(500).json(err);
       }
       return res.status(200).json("post updated successful");
     });
@@ -173,10 +167,8 @@ const putPost = (req, res) => {
 };
 
 const updatePost = (req, res) => {
-
-  res.json(PSQLDbConfigs);
+  res.json("GET request to the homepage");
 };
-
 module.exports = {
   addPost,
   getPosts,
