@@ -146,7 +146,7 @@ const putPost = (req, res) => {
 
   jwt.verify(token, process.env.API_KEY, (err, userInfo) => {
     if (err) return res.status(403).json("Authentication token Not Valid!");
-    const q = "UPDATE posts SET title = $1, description = $2, image = $3, CatID = $4 WHERE id = $5 AND uid = $6";
+    const q = "UPDATE posts SET title = $1, description = $2, image = $3, cat_id = $4 WHERE id = $5 AND uid = $6";
     const params = [
       req.body.title,
       req.body.description,
